@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>こんな動画広告はどう？</title>
+        <style>
+            #urlForm {
+                align-items: center;
+            }
+        
+            #urlForm h2 {
+                font-size: 1.4rem;
+            }
+        
+            #onlineMovieUrl {
+                width: 280px;
+                justify-content: center;
+                margin-bottom: 0px;
+            }
+        
+            .urlView iframe {
+                width: 320px;
+                height: 192px;
+                border: 1px solid #000;
+            }
+        
+            .urlView {
+                width: 320px;
+                height: 192px;
+                border: 1px solid #000;
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- コンテンツ表示画面 -->
+        <div>
+            <div>
+                <!-- 名前：<input type="text" id="onlineMovieUrl"> -->
+                <div id="urlForm">
+                    <h2 class="onlineMovieUrl">動画のURLを入力</h2>
+                    <input type="text" id="onlineMovieUrl" onblur="checkUrlValidity()">
+                    <button id="submitBtn">入力</button>
+                    <div class="urlView">
+                        <div class="title" id="videoContainer"></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <!-- <textarea id="text" cols="30" rows="10"></textarea> -->
+                <div class="industry-category">
+                    <h2>業態/商材</h2>
+                    <select id="industryCategory1" onchange="updateIndustryCategory1()">
+                        <option value="未選択" selected>業態/商材を選択</option>
+                        <option value="食品/飲料/アルコール">食品/飲料/アルコール</option>
+                        <option value="家電/家庭用品">家電/家庭用品</option>
+                        <option value="エンタメ/メディア">エンタメ/メディア</option>
+                        <option value="自動車/交通">自動車/交通</option>
+                        <option value="旅行/観光">旅行/観光</option>
+                        <option value="ファッション/アパレル">ファッション/アパレル</option>
+                        <option value="金融/保険">金融/保険</option>
+                        <option value="不動産/建築">不動産/建築</option>
+                        <option value="医療/美容/健康">医療/美容/健康</option>
+                        <option value="教育/キャリア">教育/キャリア</option>
+                        <option value="採用/就職/転職">採用/就職/転職</option>
+                        <option value="通信販売/ネットショップ">通信販売/ネットショップ</option>
+                        <option value="エネルギー">エネルギー</option>
+                        <option value="ギャンブル">ギャンブル</option>
+                        <option value="公益/環境/福祉">公益/環境/福祉</option>
+                        <option value="その他">その他</option>
+                    </select>
+                    <select id="industryCategory2"></select>
+                    <input type="text" id="industryName" placeholder="さらに名称を記入する？">
+                </div>
+
+                <div class="campaign-goal">
+                    <h2>目的</h2>
+                    <select id="campaignGoal"></select>
+                </div>
+
+                <div class="target-type">
+                    <h2>ターゲットペルソナ</h2>
+                    <div class="targetLabel" id="targetLabel">
+                    </div>
+                </div>
+
+                <div class="appeal">
+                    <h2>内容や特徴</h2>
+                    <select id="appeal">
+                        <option name="appeal" value="未分類" selected>内容や特徴</option>
+                        <option name="appeal" value="内的情報">価格・特徴・効果などの内的情報</option>
+                        <option name="appeal" value="外的情報">雰囲気・生理・嗜好などの外的情報</option>
+                    </select>
+                </div>
+                <div class="storytelling1">
+                    <h2>表現手法</h2>
+                    <div class="label">
+                        アートフル<input type="checkbox" name="storytelling1" value="artful"><br>
+                        メタファー<input type="checkbox" name="storytelling1" value="metapher"><br>
+                        シンボリック<input type="checkbox" name="storytelling1" value="simbolic"><br>
+                        プロモーショナル<input type="checkbox" name="storytelling1" value="promotional"><br>
+                        エンターテイニング<input type="checkbox" name="storytelling1" value="entertaining"><br>
+                        問題提起<input type="checkbox" name="storytelling1" value="problem-posing"><br>
+                        啓発<input type="checkbox" name="storytelling1" value="informative"></input><br>
+                    </div>
+                </div>
+                <div class="storytelling2">
+                    <h2>ストーリーテリング</h2>
+                    <div class="label">
+                        物語<input type="checkbox" name="storytelling2" value="narrative"><br>
+                        ドキュメンタリー<input type="checkbox" name="storytelling2" value="documentary"><br>
+                        シネマティック<input type="checkbox" name="storytelling2" value="cinematic"><br>
+                        インタビュー/トーク<input type="checkbox" name="storytelling2" value="interview"><br>
+                        イベント/スポーツ<input type="checkbox" name="storytelling2" value="event-coverage"><br>
+                        ミュージックビデオ<input type="checkbox" name="storytelling2" value="music"><br>
+                        機能説明/使用法<input type="checkbox" name="storytelling2" value="explainer"><br>
+                        利用体験/評価<input type="checkbox" name="storytelling2" value="testimonial"><br>
+                        アニメーション<input type="checkbox" name="storytelling2" value="animetion"><br>
+                        クレイアニメーション<input type="checkbox" name="storytelling2" value="clay-animation"><br>
+                        ホワイトボードアニメーション<input type="checkbox" name="storytelling2" value="whiteboard"><br>
+                        モーショングラフィック<input type="checkbox" name="storytelling2" value="motion-graphics"><br>
+                        インフォグラフィック<input type="checkbox" name="storytelling2" value="infographics"><br>
+                        インタラクティブ/対話・操作<input type="checkbox" name="storytelling2" value="interactive"></input><br>
+                    </div>
+                </div>
+                <div class="shooting">
+                    <h2>撮影手法</h2>
+                    <div class="label">
+                        三脚撮影<input type="checkbox" name="shooting" value="tripod"><br>
+                        手持ち<input type="checkbox" name="shooting" value="handheld"><br>
+                        ステディカム<input type="checkbox" name="shooting" value="steadicam"><br>
+                        ドリー<input type="checkbox" name="shooting" value="dolly"><br>
+                        視点<input type="checkbox" name="shooting" value="pov"><br>
+                        クレーン/ジブ<input type="checkbox" name="shooting" value="crane/jib"><br>
+                        空撮/ドローン<input type="checkbox" name="shooting" value="aerial/drone"><br>
+                        水中撮影<input type="checkbox" name="shooting" value="under-water"><br>
+                        タイムラプス<input type="checkbox" name="shooting" value="time-lapse"><br>
+                        ストップモーション<input type="checkbox" name="shooting" value="stop-motion"><br>
+                        ファストモーション<input type="checkbox" name="shooting" value="fastmotion"><br>
+                        スローモーション<input type="checkbox" name="shooting" value="slowmotion"><br>
+                        グリーンバック/クロマキー<input type="checkbox" name="shooting" value="green-screen/chromakey"><br>
+                        マルチカメラ<input type="checkbox" name="shooting" value="multicum"><br>
+                        VR/AR<input type="checkbox" name="shooting" value="vr/ar"><br>
+                        360°<input type="checkbox" name="shooting" value="360"></input><br>
+                    </div>
+                </div>
+                <div class="editing">
+                    <h2>編集手法</h2>
+                    <div class="label">
+                        カット<input type="checkbox" name="editing" value="cut">
+                        クロスフェード<input type="checkbox" name="editing" value="crossfade">
+                        ジャンプカット<input type="checkbox" name="editing" value="jumpcut">
+                        ワイプ<input type="checkbox" name="editing" value="wipe">
+                        フェードイン/フェードアウト<input type="checkbox" name="editing" value="fadein-fadeout">
+                        ピクチャーインピクチャー<input type="checkbox" name="editing" value="pic-in-pic">
+                        モンタージュ<input type="checkbox" name="editing" value="montage">
+                        オーバーレイ<input type="checkbox" name="editing" value="overlay">
+                        テロップ<input type="checkbox" name="editing" value="lower-thirs">
+                        カラーグレーディング<input type="checkbox" name="editing" value="color-grading">
+                        エフェクト<input type="checkbox" name="editing" value="effects">
+                        トランジション<input type="checkbox" name="editing" value="transition">
+                        レイヤー<input type="checkbox" name="editing" value="layer"></input>
+                    </div>
+                </div>
+                <div class="onomatope">
+                    <h2>オノマトペ</h2>
+                    <div  class="onomatope-label">
+                        <div>
+                            <p>光</p>
+                            <input type="checkbox" name="onomatope" value="light" onchange="onomatope1Options('光')">
+                            <select id="onomatope2-light"></select>
+                            <input type="text" id="onomatope3-light" placeholder="全角カナ6文字" disabled>
+                        </div>
+                        <div>
+                            <p>風</p>
+                            <input type="checkbox" name="onomatope" value="wind" onchange="onomatope1Options('風')">
+                            <select id="onomatope2-wind"></select>
+                            <input type="text" id="onomatope3-wind" placeholder="全角カナ6文字" disabled>
+                        </div>
+                        <div>
+                            <p>水</p>
+                            <input type="checkbox" name="onomatope" value="water" onchange="onomatope1Options('水')">
+                            <select id="onomatope2-water"></select>
+                            <input type="text" id="onomatope3-water" placeholder="全角カナ6文字" disabled>
+                        </div>
+                        <div>
+                            <p>音</p>
+                            <input type="checkbox" name="onomatope" value="sound" onchange="onomatope1Options('音')">
+                            <select id="onomatope2-sound"></select>
+                            <input type="text" id="onomatope3-sound" placeholder="全角カナ6文字" disabled>
+                        </div>
+                        <div>
+                            <p>心</p>
+                            <input type="checkbox" name="onomatope" value="mind" onchange="onomatope1Options('心')">
+                            <select id="onomatope2-mind"></select>
+                            <input type="text" id="onomatope3-mind" placeholder="全角カナ6文字" disabled>
+                        </div>
+                        <div>
+                            <p>状態</p>
+                            <input type="checkbox" name="onomatope" value="condition" onchange="onomatope1Options('状態')">
+                            <select id="onomatope2-condition"></select>
+                            <input type="text" id="onomatope3-condition" placeholder="全角カナ6文字" disabled>
+                        </div>
+                        <div>
+                            <p>感覚</p>
+                            <input type="checkbox" name="onomatope" value="tactile" onchange="onomatope1Options('感覚')">
+                            <select id="onomatope2-tactile"></select>
+                            <input type="text" id="onomatope3-tactile" placeholder="全角カナ6文字" disabled>
+                        </div>
+                    </div>
+                </div>
+                <button id="send">送信</button>
+                
+            </div>
+            <div id="output" style="overflow: auto;height: 300px;"></div>
+        </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="module">
+
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
+            import { getDatabase, ref, push, set, onChildAdded, remove, onChildRemoved }
+                from "https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js";
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+                apiKey: "",
+                authDomain: "",
+                projectId: "",
+                storageBucket: "",
+                messagingSenderId: "",
+                appId: ""
+            };
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app); //RealtimeDBに接続
+            const dbRef = ref(db, "onlineMovieList"); //RealtimeDB内の"onlineMovieList"を使う
+
+            //データ登録(Click)
+            $("#send").on("click", function () {
+                const msg = {
+                    onlineMovieUrl: $("#onlineMovieUrl").val(),
+                    industryCategory1: $("#industryCategory1").val(),
+                    industryName: $("#industryName").val(),
+                    campaignGoal: $("#campaignGoal").val(),
+                    targetLabel: $("#targetLabel").val()
+                }
+                const newPostRef = push(dbRef); //ユニークKEYを生成
+                set(newPostRef, msg);           //"onlineMovieList"にユニークKEYをつけてオブジェクトデータを登録
+            });
+            //データ登録(Enter)
+            $("#industryName").on("keydown", function (e) {
+                console.log(e);        //e変数の中身を確認！！
+                if (e.keyCode == 13) {   //EnterKey=13
+                    const msg = {
+                        onlineMovieUrl: $("#onlineMovieUrl").val(),
+                        industryCategory1: $("#industryCategory1").val(),
+                        industryName: $("#industryName").val(),
+                        campaignGoal: $("#campaignGoal").val(),
+                        targetLabel: $("#targetLabel").val()
+                    }
+                    const newPostRef = push(dbRef); //ユニークKEYを生成
+                    set(newPostRef, msg);           //"onlineMovieList"にユニークKEYをつけてオブジェクトデータを登録
+                }
+            });
+            // 最初にデータ取得＆onSnapshotでリアルタイムにデータを取得
+            onChildAdded(dbRef, function (data) {
+                const msg = data.val();
+                const key = data.key;
+                let h = '<p>';
+                // オンライン動画のURLをiFrameで表示
+                if (isValidUrl(msg.onlineMovieUrl)) {
+                    if (isYouTubeUrl(msg.onlineMovieUrl)) {
+                        const embedCode = getYouTubeEmbedCode(msg.onlineMovieUrl);
+                        h += embedCode;
+                    } else if (isVimeoUrl(msg.onlineMovieUrl)) {
+                        const embedCode = getVimeoEmbedCode(msg.onlineMovieUrl);
+                        h += embedCode;
+                    } else {
+                        h += msg.onlineMovieUrl;
+                    }
+                } else {
+                    h += msg.onlineMovieUrl;
+                }
+                h += '<br>';
+                h += msg.industryCategory1;
+                h += '</p>';
+                h += msg.industryName;
+                h += '</p>';
+                h += msg.campaignGoal;
+                h += '</p>';
+                h += msg.targetLabel;
+                h += '</p>';
+                $("#output").append(h);
+            });
+
+            // YouTubeのURLかどうかを判定する関数
+            function isYouTubeUrl(url) {
+                return url.includes('youtube.com') || url.includes('youtu.be');
+            }
+
+            // VimeoのURLかどうかを判定する関数
+            function isVimeoUrl(url) {
+                return url.includes('vimeo.com');
+            }
+
+            // VimeoのURLからビデオIDを抽出する関数
+            function getVimeoVideoId(url) {
+            const regex = /https?:\/\/(?:www\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/(?:[^\/]*)\/videos\/|album\/(?:\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/;
+            const match = url.match(regex);
+            if (match && match[1]) {
+                return match[1];
+            } else {
+                return null;
+            }
+            }
+        </script>
+
+        <script>
+            // 入力ボタンがクリックされたときにcheckUrlValidity()関数を呼び出す
+            document.getElementById('submitBtn').addEventListener('click', checkUrlValidity);
+            // showVideo関数の中身を修正
+            function showVideo(embedCode) {
+                var videoContainer = document.getElementById("videoContainer");
+                videoContainer.innerHTML = embedCode;
+            }
+            // isValidUrl関数の中身を修正
+            function isValidUrl(url) {
+                var youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)/;
+                var vimeoRegex = /^(https?:\/\/)?(www\.)?(vimeo\.com\/)/;
+                return youtubeRegex.test(url) || vimeoRegex.test(url);
+            }
+            // YouTubeやVimeoのURLが有効かどうかを確認
+            function checkUrlValidity() {
+                var urlInput = document.getElementById("onlineMovieUrl");
+                var url = urlInput.value;
+                if (isValidUrl(url)) {
+                    if (isYouTubeUrl(url)) {
+                        var embedCode = getYouTubeEmbedCode(url);
+                        showVideo(embedCode);
+                    } else if (isVimeoUrl(url)) {
+                        var embedCode = getVimeoEmbedCode(url);
+                        showVideo(embedCode);
+                    }
+                } else {
+                    alert("YouTubeまたはVimeoのURLを入力してください。");
+                }
+            }
+            // Frame in YouTube or Vimeo URL
+            document.getElementById('onlineMovieUrl').addEventListener('blur', function () {
+                var url = this.value;
+                if (isValidUrl(url)) {
+                    var videoContainer = document.querySelector('.urlView');
+                    if (isYouTubeUrl(url)) {
+                        var embedCode = getYouTubeEmbedCode(url);
+                        videoContainer.innerHTML = embedCode;
+                    } else if (isVimeoUrl(url)) {
+                        var embedCode = getVimeoEmbedCode(url);
+                        videoContainer.innerHTML = embedCode;
+                    }
+                }
+            });
+            function isYouTubeUrl(url) {
+                var youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)/;
+                return youtubeRegex.test(url);
+            }
+            function isVimeoUrl(url) {
+                var vimeoRegex = /^(https?:\/\/)?(www\.)?(vimeo\.com\/)/;
+                return vimeoRegex.test(url);
+            }
+            function getYouTubeEmbedCode(url) {
+                var videoId = getYouTubeVideoId(url);
+                var embedUrl = 'https://www.youtube.com/embed/' + videoId;
+                var embedCode = '<iframe width="320" height="192" src="' + embedUrl + '" frameborder="0" allow="fullscreen"></iframe>';
+                return embedCode;
+            }
+            function getYouTubeVideoId(url) {
+                var youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)/;
+                var match = url.match(youtubeRegex);
+                if (match) {
+                    var params = new URLSearchParams(new URL(url).search);
+                    return params.get('v');
+                }
+                return null;
+            }
+            function getVimeoEmbedCode(url) {
+                var videoId = getVimeoVideoId(url);
+                var embedUrl = 'https://player.vimeo.com/video/' + videoId;
+                var embedCode = '<iframe src="' + embedUrl + '" width="320" height="192" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+                return embedCode;
+            }
+            function getVimeoVideoId(url) {
+                var vimeoRegex = /^(https?:\/\/)?(www\.)?(vimeo\.com\/)/;
+                var match = url.match(vimeoRegex);
+                if (match) {
+                    return url.split('/').pop();
+                }
+                return null;
+            }
+
+            // IndustryCategory
+            function updateIndustryCategory1() {
+            var category1 = document.getElementById("industryCategory1").value;
+            var category2Select = document.getElementById("industryCategory2");
+                // category2の選択肢をリセット
+                category2Select.innerHTML = "";
+                // category1に応じてcategory2の選択肢を生成
+                if (category1 === "食品/飲料/アルコール") {
+                    var options = [
+                        "食品/加工食品",
+                        "菓子",
+                        "調味料",
+                        "お茶/珈琲/ジュース類",
+                        "アルコール",
+                        "その他"
+                    ];
+                } else if (category1 === "家電/家庭用品") {
+                    var options = [
+                        "大型家電",
+                        "小型家電/PC/スマホ",
+                        "日用品/生活用品",
+                        "その他"
+                    ];
+                } else if (category1 === "エンタメ/メディア") {
+                    var options = [
+                    "スポーツ/イベント",
+                    "ライブ/コンサート",
+                    "映画/舞台/演劇",
+                    "事業者/興行主/製作委員会",
+                    "映画/映像コンテンツ",
+                    "ゲーム/ハード・ソフト・アプリ",
+                    "その他"
+                    ];
+                } else if (category1 === "自動車/交通") {
+                    var options = [
+                    "自動車メーカー",
+                    "2輪メーカー",
+                    "車両シリーズ",
+                    "車両単体",
+                    "その他"
+                    ];
+                } else if (category1 === "旅行/観光") {
+                    var options = [
+                    "公共交通機関",
+                    "国内旅行/観光",
+                    "海外旅行/観光",
+                    "施設/建物",
+                    "予約/サービス",
+                    "その他"
+                    ];
+                } else if (category1 === "ファッション/アパレル") {
+                    var options = [
+                    "ブランド",
+                    "衣料品",
+                    "靴・バッグ・財布",
+                    "時計・貴金属",
+                    "予約/サービス",
+                    "その他"
+                    ];
+                } else if (category1 === "金融/保険") {
+                    var options = [
+                    "銀行",
+                    "クレジットカード",
+                    "投資/信託",
+                    "保険",
+                    "仮想通貨売買",
+                    "その他"
+                    ];
+                } else if (category1 === "不動産/建築") {
+                    var options = [
+                    "不動産販売",
+                    "賃貸/仲介/管理",
+                    "建築/設計",
+                    "その他"
+                    ];
+                } else if (category1 === "医療/美容/健康") {
+                    var options = [
+                    "病院/医院/クリニック",
+                    "医薬品メーカー/商品",
+                    "化粧品メーカー/ブランド",
+                    "健康食品関連",
+                    "美容関連器具/機器",
+                    "その他"
+                    ];
+                } else if (category1 === "教育/キャリア") {
+                    var options = [
+                    "学校",
+                    "学習塾/予備校",
+                    "学習サービス",
+                    "その他"
+                    ];
+                } else if (category1 === "採用/就職/転職") {
+                    var options = [
+                    "企業ブランド",
+                    "サービス名",
+                    "その他"
+                    ];
+                } else if (category1 === "通信販売/ネットショップ") {
+                    var options = [
+                    "企業/サービス名",
+                    "イベント/キャンペーン",
+                    "その他"
+                    ];
+                } else if (category1 === "エネルギー") {
+                    var options = [
+                    "電力/太陽光",
+                    "ガス",
+                    "水道",
+                    "風力",
+                    "その他"
+                    ];
+                } else if (category1 === "通信事業") {
+                    var options = [
+                    "通信事業社",
+                    "その他"
+                    ];
+                } else if (category1 === "ギャンブル") {
+                    var options = [
+                    "宝くじ/LOTO",
+                    "競馬",
+                    "競輪",
+                    "競艇",
+                    "オートレース",
+                    "サービス",
+                    "その他"
+                    ];
+                } else if (category1 === "公益/環境/福祉") {
+                    var options = [
+                    "公益団体/特殊法人",
+                    "サービス",
+                    "その他"
+                    ];
+                } else if (category1 === "その他") {
+                    var options = [
+                    "その他"
+                    ];
+                }
+                // 選択肢をoption要素として追加
+                options.forEach(function(option) {
+                    var optionElement = document.createElement("option");
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    category2Select.appendChild(optionElement);
+                });
+            }
+
+            // campaignGoal
+            function updateCampaignGoal() {
+                var campaignGoal = document.getElementById("campaignGoal").value;
+                var options = [
+                    "認知向上/価値観醸成",
+                    "エンゲージメント/関与",
+                    "購買/登録/問合せ向上"
+                ];
+                // campaignGoalの要素を取得
+                var campaignGoalElement = document.getElementById("campaignGoal");
+                // campaignGoalの要素をクリア
+                campaignGoalElement.innerHTML = ''; // campaignGoalElementの中身をクリアする
+                // 選択肢をoption要素として追加
+                var defaultOption = document.createElement("option"); // デフォルトのオプション要素を作成
+                defaultOption.value = ""; // デフォルトの値を空に設定
+                defaultOption.textContent = "目的を選択"; // デフォルトのテキストを設定
+                campaignGoalElement.appendChild(defaultOption); // デフォルトのオプション要素を追加
+                options.forEach(function(option) {
+                    var optionElement = document.createElement("option");
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    campaignGoalElement.appendChild(optionElement);
+                });
+                
+                // 選択した値を再度選択する
+                campaignGoalElement.value = campaignGoal;
+            }
+            // 初期表示時に呼び出す
+            updateCampaignGoal();
+
+            // ターゲットペルソナ
+            var targetTypes = [
+                { label: "4〜12歳" },
+                { label: "13〜19歳" },
+                { label: "20〜34歳 女性" },
+                { label: "35〜49歳 女性" },
+                { label: "50歳以上 女性" },
+                { label: "20〜34歳 男性" },
+                { label: "35〜49歳 男性" },
+                { label: "50歳以上 男性" }
+            ];
+            var targetLabelElement = document.getElementById("targetLabel");
+            targetTypes.forEach(function(targetType) {
+                var label = targetType.label;
+                var value = targetType.value;
+                var checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.name = "target-type";
+                checkbox.value = value;
+                var text = document.createTextNode(label);
+                var br = document.createElement("br");
+                targetLabelElement.appendChild(checkbox);
+                targetLabelElement.appendChild(text);
+                targetLabelElement.appendChild(br);
+            });
+
+
+        </script>
+    </body>
+
+</html>
