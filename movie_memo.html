@@ -44,7 +44,7 @@
         <!-- コンテンツ表示画面 -->
         <div>
             <div>
-                <!-- 名前：<input type="text" id="onlineMovieUrl"> -->
+                
                 <div id="urlForm">
                     <h2 class="onlineMovieUrl">動画のURLを入力</h2>
                     <input type="text" id="onlineMovieUrl" onblur="checkUrlValidity()">
@@ -55,11 +55,11 @@
                 </div>
             </div>
             <div>
-                <!-- <textarea id="text" cols="30" rows="10"></textarea> -->
+                
                 <div class="industry-category">
                     <h2>業態/商材</h2>
                     <select id="industryCategory1" onchange="updateIndustryCategory1()">
-                        <option value="未選択" selected>業態/商材を選択</option>
+                        <option value="未選択" selected>大分類を選択</option>
                         <option value="食品/飲料/アルコール">食品/飲料/アルコール</option>
                         <option value="家電/家庭用品">家電/家庭用品</option>
                         <option value="エンタメ/メディア">エンタメ/メディア</option>
@@ -88,135 +88,49 @@
 
                 <div class="target-type">
                     <h2>ターゲットペルソナ</h2>
-                    <div class="targetLabel" id="targetLabel">
-                    </div>
+                    <div id="targetLabel"></div>
                 </div>
 
                 <div class="appeal">
                     <h2>内容や特徴</h2>
-                    <select id="appeal">
-                        <option name="appeal" value="未分類" selected>内容や特徴</option>
-                        <option name="appeal" value="内的情報">価格・特徴・効果などの内的情報</option>
-                        <option name="appeal" value="外的情報">雰囲気・生理・嗜好などの外的情報</option>
-                    </select>
+                    <select id="appeal"></select>
                 </div>
-                <div class="storytelling1">
+
+                <div class="storyTelling1">
                     <h2>表現手法</h2>
-                    <div class="label">
-                        アートフル<input type="checkbox" name="storytelling1" value="artful"><br>
-                        メタファー<input type="checkbox" name="storytelling1" value="metapher"><br>
-                        シンボリック<input type="checkbox" name="storytelling1" value="simbolic"><br>
-                        プロモーショナル<input type="checkbox" name="storytelling1" value="promotional"><br>
-                        エンターテイニング<input type="checkbox" name="storytelling1" value="entertaining"><br>
-                        問題提起<input type="checkbox" name="storytelling1" value="problem-posing"><br>
-                        啓発<input type="checkbox" name="storytelling1" value="informative"></input><br>
-                    </div>
+                    <div id="storyTelling1"></div>
                 </div>
-                <div class="storytelling2">
+
+                <div class="storyTelling2">
                     <h2>ストーリーテリング</h2>
-                    <div class="label">
-                        物語<input type="checkbox" name="storytelling2" value="narrative"><br>
-                        ドキュメンタリー<input type="checkbox" name="storytelling2" value="documentary"><br>
-                        シネマティック<input type="checkbox" name="storytelling2" value="cinematic"><br>
-                        インタビュー/トーク<input type="checkbox" name="storytelling2" value="interview"><br>
-                        イベント/スポーツ<input type="checkbox" name="storytelling2" value="event-coverage"><br>
-                        ミュージックビデオ<input type="checkbox" name="storytelling2" value="music"><br>
-                        機能説明/使用法<input type="checkbox" name="storytelling2" value="explainer"><br>
-                        利用体験/評価<input type="checkbox" name="storytelling2" value="testimonial"><br>
-                        アニメーション<input type="checkbox" name="storytelling2" value="animetion"><br>
-                        クレイアニメーション<input type="checkbox" name="storytelling2" value="clay-animation"><br>
-                        ホワイトボードアニメーション<input type="checkbox" name="storytelling2" value="whiteboard"><br>
-                        モーショングラフィック<input type="checkbox" name="storytelling2" value="motion-graphics"><br>
-                        インフォグラフィック<input type="checkbox" name="storytelling2" value="infographics"><br>
-                        インタラクティブ/対話・操作<input type="checkbox" name="storytelling2" value="interactive"></input><br>
-                    </div>
+                    <div id="storyTelling2"></div>
                 </div>
+
                 <div class="shooting">
                     <h2>撮影手法</h2>
-                    <div class="label">
-                        三脚撮影<input type="checkbox" name="shooting" value="tripod"><br>
-                        手持ち<input type="checkbox" name="shooting" value="handheld"><br>
-                        ステディカム<input type="checkbox" name="shooting" value="steadicam"><br>
-                        ドリー<input type="checkbox" name="shooting" value="dolly"><br>
-                        視点<input type="checkbox" name="shooting" value="pov"><br>
-                        クレーン/ジブ<input type="checkbox" name="shooting" value="crane/jib"><br>
-                        空撮/ドローン<input type="checkbox" name="shooting" value="aerial/drone"><br>
-                        水中撮影<input type="checkbox" name="shooting" value="under-water"><br>
-                        タイムラプス<input type="checkbox" name="shooting" value="time-lapse"><br>
-                        ストップモーション<input type="checkbox" name="shooting" value="stop-motion"><br>
-                        ファストモーション<input type="checkbox" name="shooting" value="fastmotion"><br>
-                        スローモーション<input type="checkbox" name="shooting" value="slowmotion"><br>
-                        グリーンバック/クロマキー<input type="checkbox" name="shooting" value="green-screen/chromakey"><br>
-                        マルチカメラ<input type="checkbox" name="shooting" value="multicum"><br>
-                        VR/AR<input type="checkbox" name="shooting" value="vr/ar"><br>
-                        360°<input type="checkbox" name="shooting" value="360"></input><br>
-                    </div>
+                    <div id="shooting"></div>
                 </div>
                 <div class="editing">
                     <h2>編集手法</h2>
-                    <div class="label">
-                        カット<input type="checkbox" name="editing" value="cut">
-                        クロスフェード<input type="checkbox" name="editing" value="crossfade">
-                        ジャンプカット<input type="checkbox" name="editing" value="jumpcut">
-                        ワイプ<input type="checkbox" name="editing" value="wipe">
-                        フェードイン/フェードアウト<input type="checkbox" name="editing" value="fadein-fadeout">
-                        ピクチャーインピクチャー<input type="checkbox" name="editing" value="pic-in-pic">
-                        モンタージュ<input type="checkbox" name="editing" value="montage">
-                        オーバーレイ<input type="checkbox" name="editing" value="overlay">
-                        テロップ<input type="checkbox" name="editing" value="lower-thirs">
-                        カラーグレーディング<input type="checkbox" name="editing" value="color-grading">
-                        エフェクト<input type="checkbox" name="editing" value="effects">
-                        トランジション<input type="checkbox" name="editing" value="transition">
-                        レイヤー<input type="checkbox" name="editing" value="layer"></input>
-                    </div>
+                    <div id="editing"></div>
                 </div>
+
                 <div class="onomatope">
                     <h2>オノマトペ</h2>
-                    <div  class="onomatope-label">
-                        <div>
-                            <p>光</p>
-                            <input type="checkbox" name="onomatope" value="light" onchange="onomatope1Options('光')">
-                            <select id="onomatope2-light"></select>
-                            <input type="text" id="onomatope3-light" placeholder="全角カナ6文字" disabled>
-                        </div>
-                        <div>
-                            <p>風</p>
-                            <input type="checkbox" name="onomatope" value="wind" onchange="onomatope1Options('風')">
-                            <select id="onomatope2-wind"></select>
-                            <input type="text" id="onomatope3-wind" placeholder="全角カナ6文字" disabled>
-                        </div>
-                        <div>
-                            <p>水</p>
-                            <input type="checkbox" name="onomatope" value="water" onchange="onomatope1Options('水')">
-                            <select id="onomatope2-water"></select>
-                            <input type="text" id="onomatope3-water" placeholder="全角カナ6文字" disabled>
-                        </div>
-                        <div>
-                            <p>音</p>
-                            <input type="checkbox" name="onomatope" value="sound" onchange="onomatope1Options('音')">
-                            <select id="onomatope2-sound"></select>
-                            <input type="text" id="onomatope3-sound" placeholder="全角カナ6文字" disabled>
-                        </div>
-                        <div>
-                            <p>心</p>
-                            <input type="checkbox" name="onomatope" value="mind" onchange="onomatope1Options('心')">
-                            <select id="onomatope2-mind"></select>
-                            <input type="text" id="onomatope3-mind" placeholder="全角カナ6文字" disabled>
-                        </div>
-                        <div>
-                            <p>状態</p>
-                            <input type="checkbox" name="onomatope" value="condition" onchange="onomatope1Options('状態')">
-                            <select id="onomatope2-condition"></select>
-                            <input type="text" id="onomatope3-condition" placeholder="全角カナ6文字" disabled>
-                        </div>
-                        <div>
-                            <p>感覚</p>
-                            <input type="checkbox" name="onomatope" value="tactile" onchange="onomatope1Options('感覚')">
-                            <select id="onomatope2-tactile"></select>
-                            <input type="text" id="onomatope3-tactile" placeholder="全角カナ6文字" disabled>
-                        </div>
-                    </div>
+                    <select id="onomatope1" onchange="updateOnomatope()">
+                        <option value="未選択" selected>大分類を選択</option>
+                        <option value="光">光</option>
+                        <option value="風">風</option>
+                        <option value="液体">液体</option>
+                        <option value="音">音</option>
+                        <option value="心">心</option>
+                        <option value="状態">状態</option>
+                        <option value="感覚">感覚</option>
+                    </select>
+                    <select id="onomatope2"></select>
+                    <input type="text" id="onomatopeName" placeholder="全角カナ">
                 </div>
+
                 <button id="send">送信</button>
                 
             </div>
@@ -234,7 +148,7 @@
             // Your web app's Firebase configuration
             const firebaseConfig = {
                 apiKey: "",
-                authDomain: "",
+                authDomain: "”,
                 projectId: "",
                 storageBucket: "",
                 messagingSenderId: "",
@@ -244,33 +158,92 @@
             const db = getDatabase(app); //RealtimeDBに接続
             const dbRef = ref(db, "onlineMovieList"); //RealtimeDB内の"onlineMovieList"を使う
 
-            //データ登録(Click)
+            //データ登録 (Click)
             $("#send").on("click", function () {
+                const selectedTargetLabels = [];
+                $("input[name='target-type']:checked").each(function () {
+                    selectedTargetLabels.push($(this).val());
+                });
+                const selectedStoryTelling1Methods = [];
+                $("input[name='storyTelling1-method']:checked").each(function () {
+                    selectedStoryTelling1Methods.push($(this).val());
+                });
+                const selectedStoryTelling2Methods = [];
+                $("input[name='storyTelling2-method']:checked").each(function () {
+                    selectedStoryTelling2Methods.push($(this).val());
+                });
+                const selectedShootingMethods = [];
+                $("input[name='shooting-method']:checked").each(function () {
+                    selectedShootingMethods.push($(this).val());
+                });
+                const selectedEditingMethods = [];
+                $("input[name='editing-method']:checked").each(function () {
+                    selectedEditingMethods.push($(this).val());
+                });
                 const msg = {
                     onlineMovieUrl: $("#onlineMovieUrl").val(),
                     industryCategory1: $("#industryCategory1").val(),
+                    industryCategory2: $("#industryCategory2").val(),
                     industryName: $("#industryName").val(),
                     campaignGoal: $("#campaignGoal").val(),
-                    targetLabel: $("#targetLabel").val()
+                    targetLabel: selectedTargetLabels.join(","),
+                    appeal: $("#appeal").val(),
+                    storyTelling1: selectedStoryTelling1Methods.join(","),
+                    storyTelling2: selectedStoryTelling2Methods.join(","),
+                    shooting: selectedShootingMethods.join(","),
+                    editing: selectedEditingMethods.join(","),
+                    onomatope1: $("#onomatope1").val(),
+                    onomatope2: $("#onomatope2").val(),
+                    onomatopeName: $("#onomatopeName").val()
                 }
                 const newPostRef = push(dbRef); //ユニークKEYを生成
-                set(newPostRef, msg);           //"onlineMovieList"にユニークKEYをつけてオブジェクトデータを登録
+                set(newPostRef, msg);//"onlineMovieList"にユニークKEYをつけてオブジェクトデータを登録
             });
-            //データ登録(Enter)
+
+            // データ登録 (Enter)
             $("#industryName").on("keydown", function (e) {
-                console.log(e);        //e変数の中身を確認！！
                 if (e.keyCode == 13) {   //EnterKey=13
+                    const selectedTargetLabels = [];
+                    $("input[name='target-type']:checked").each(function () {
+                        selectedTargetLabels.push($(this).val());
+                    });
+                    const selectedStoryTelling1Methods = [];
+                    $("input[name='storyTelling1-method']:checked").each(function () {
+                        selectedStoryTelling1Methods.push($(this).val());
+                    });
+                    const selectedStoryTelling2Methods = [];
+                    $("input[name='storyTelling2-method']:checked").each(function () {
+                        selectedStoryTelling2Methods.push($(this).val());
+                    });
+                    const selectedShootingMethods = [];
+                    $("input[name='shooting-method']:checked").each(function () {
+                        selectedShootingMethods.push($(this).val());
+                    });
+                    const selectedEditingMethods = [];
+                    $("input[name='editing-method']:checked").each(function () {
+                        selectedEditingMethods.push($(this).val());
+                    });
                     const msg = {
                         onlineMovieUrl: $("#onlineMovieUrl").val(),
                         industryCategory1: $("#industryCategory1").val(),
+                        industryCategory2: $("#industryCategory2").val(),
                         industryName: $("#industryName").val(),
                         campaignGoal: $("#campaignGoal").val(),
-                        targetLabel: $("#targetLabel").val()
+                        targetLabel: selectedTargetLabels.join(","),
+                        appeal: $("#appeal").val(),
+                        storyTelling1: selectedStoryTelling1Methods.join(","),
+                        storyTelling2: selectedStoryTelling2Methods.join(","),
+                        shooting: selectedShootingMethods.join(","),
+                        editing: selectedEditingMethods.join(","),
+                        onomatope1: $("#onomatope1").val(),
+                        onomatope2: $("#onomatope2").val(),
+                        onomatopeName: $("#onomatopeName").val()
                     }
                     const newPostRef = push(dbRef); //ユニークKEYを生成
                     set(newPostRef, msg);           //"onlineMovieList"にユニークKEYをつけてオブジェクトデータを登録
                 }
             });
+
             // 最初にデータ取得＆onSnapshotでリアルタイムにデータを取得
             onChildAdded(dbRef, function (data) {
                 const msg = data.val();
@@ -292,12 +265,24 @@
                 }
                 h += '<br>';
                 h += msg.industryCategory1;
+                h += '</p>';;
+                h += msg.industryCategory2;
                 h += '</p>';
                 h += msg.industryName;
                 h += '</p>';
                 h += msg.campaignGoal;
                 h += '</p>';
                 h += msg.targetLabel;
+                h += '</p>';
+                h += msg.appeal;
+                h += '</p>';
+                h += msg.storyTelling1;
+                h += '</p>';
+                h += msg.storyTelling2;
+                h += '</p>';
+                h += msg.shooting;
+                h += '</p>';
+                h += msg.editing;
                 h += '</p>';
                 $("#output").append(h);
             });
@@ -409,9 +394,9 @@
             // IndustryCategory
             function updateIndustryCategory1() {
             var category1 = document.getElementById("industryCategory1").value;
-            var category2Select = document.getElementById("industryCategory2");
+            var category2 = document.getElementById("industryCategory2");
                 // category2の選択肢をリセット
-                category2Select.innerHTML = "";
+                category2.innerHTML = "";
                 // category1に応じてcategory2の選択肢を生成
                 if (category1 === "食品/飲料/アルコール") {
                     var options = [
@@ -548,7 +533,7 @@
                     var optionElement = document.createElement("option");
                     optionElement.value = option;
                     optionElement.textContent = option;
-                    category2Select.appendChild(optionElement);
+                    category2.appendChild(optionElement);
                 });
             }
 
@@ -584,14 +569,14 @@
 
             // ターゲットペルソナ
             var targetTypes = [
-                { label: "4〜12歳" },
-                { label: "13〜19歳" },
-                { label: "20〜34歳 女性" },
-                { label: "35〜49歳 女性" },
-                { label: "50歳以上 女性" },
-                { label: "20〜34歳 男性" },
-                { label: "35〜49歳 男性" },
-                { label: "50歳以上 男性" }
+                { label: "4〜12歳", value: "4〜12歳" },
+                { label: "13〜19歳", value: "13〜19歳" },
+                { label: "20〜34歳 女性", value: "20〜34歳 女性" },
+                { label: "35〜49歳 女性", value: "35〜49歳 女性" },
+                { label: "50歳以上 女性", value: "50歳以上 女性" },
+                { label: "20〜34歳 男性", value: "20〜34歳 男性" },
+                { label: "35〜49歳 男性", value: "35〜49歳 男性" },
+                { label: "50歳以上 男性", value: "50歳以上 男性" }
             ];
             var targetLabelElement = document.getElementById("targetLabel");
             targetTypes.forEach(function(targetType) {
@@ -608,6 +593,269 @@
                 targetLabelElement.appendChild(br);
             });
 
+            // appeal
+            function updateAppeal() {
+                var appeal = document.getElementById("appeal").value;
+                var options = [
+                    "価格・特徴・効果などの内的情報",
+                    "ニーズ・市場・社会概況などの外的情報"
+                ];
+                // appealの要素を取得
+                var appealElement = document.getElementById("appeal");
+                // appealの要素をクリア
+                appealElement.innerHTML = ''; // appealElementの中身をクリアする
+                // 選択肢をoption要素として追加
+                var defaultOption = document.createElement("option"); // デフォルトのオプション要素を作成
+                defaultOption.value = ""; // デフォルトの値を空に設定
+                defaultOption.textContent = "内容や特徴を選択"; // デフォルトのテキストを設定
+                appealElement.appendChild(defaultOption); // デフォルトのオプション要素を追加
+                options.forEach(function(option) {
+                    var optionElement = document.createElement("option");
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    appealElement.appendChild(optionElement);
+                });
+                
+                // 選択した値を再度選択する
+                appealElement.value = appeal;
+            }
+            // 初期表示時に呼び出す
+            updateAppeal();
+
+            // 表現手法
+            var storyTelling1Methods = [
+                { label: "アートフル", value: "アートフル" },
+                { label: "メタファー", value: "メタファー" },
+                { label: "シンボリック", value: "シンボリック" },
+                { label: "プロモーショナル", value: "プロモーショナル" },
+                { label: "エンターテイニング", value: "エンターテイニング" },
+                { label: "問題提起", value: "問題提起" },
+                { label: "啓発", value: "啓発" }
+            ];
+            var storytelling1Element = document.getElementById("storyTelling1");
+            storyTelling1Methods.forEach(function(method) {
+                var label = method.label;
+                var value = method.value;
+                var checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.name = "storyTelling1-method";
+                checkbox.value = value;
+                var text = document.createTextNode(label);
+                var br = document.createElement("br");
+                storytelling1Element.appendChild(checkbox);
+                storytelling1Element.appendChild(text);
+                storytelling1Element.appendChild(br);
+            });
+
+            // ストーリーテリング
+            var storyTelling2Methods = [
+                { label: "ドキュメンタリー", value: "ドキュメンタリー" },
+                { label: "シネマティック", value: "シネマティック" },
+                { label: "インタビュー/トーク", value: "インタビュー/トーク" },
+                { label: "イベント/スポーツ", value: "イベント/スポーツ" },
+                { label: "ミュージックビデオ", value: "ミュージックビデオ" },
+                { label: "機能説明/使用法", value: "機能説明/使用法" },
+                { label: "利用体験/評価", value: "利用体験/評価" },
+                { label: "アニメーション", value: "アニメーション" },
+                { label: "クレイアニメーション", value: "クレイアニメーション" },
+                { label: "ホワイトボードアニメーション", value: "ホワイトボードアニメーション" },
+                { label: "モーショングラフィック", value: "モーショングラフィック" },
+                { label: "インフォグラフィック", value: "インフォグラフィック" },
+                { label: "インタラクティブ/対話・操作", value: "インタラクティブ/対話・操作" },
+                { label: "CG", value: "CG" }
+            ];
+            var storytelling2Element = document.getElementById("storyTelling2");
+            storyTelling2Methods.forEach(function(method) {
+                var label = method.label;
+                var value = method.value;
+                var checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.name = "storyTelling2-method";
+                checkbox.value = value;
+                var text = document.createTextNode(label);
+                var br = document.createElement("br");
+                storytelling2Element.appendChild(checkbox);
+                storytelling2Element.appendChild(text);
+                storytelling2Element.appendChild(br);
+            });
+
+            // 撮影手法
+            var shootingMethods = [
+                { label: "三脚撮影", value: "三脚撮影" },
+                { label: "手持ち", value: "手持ち" },
+                { label: "ステディカム", value: "ステディカム" },
+                { label: "クレーン/ジブ", value: "クレーン/ジブ" },
+                { label: "ドリー", value: "ドリー" },
+                { label: "空撮/ドローン", value: "空撮/ドローン" },
+                { label: "水中撮影", value: "水中撮影" },
+                { label: "POV/視点", value: "POV/視点" },
+                { label: "タイムラプス", value: "タイムラプス" },
+                { label: "ストップモーション", value: "ストップモーション" },
+                { label: "ファストモーション", value: "ファストモーション" },
+                { label: "スローモーション", value: "スローモーション" },
+                { label: "グリーンバック/クロマキー", value: "グリーンバック/クロマキー" },
+                { label: "マルチカメラ", value: "マルチカメラ" },
+                { label: "VR/AR", value: "VR/AR" },
+                { label: "360°", value: "360°" }
+            ];
+            var shootingElement = document.getElementById("shooting");
+            shootingMethods.forEach(function(method) {
+                var label = method.label;
+                var value = method.value;
+                var checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.name = "shooting-method";
+                checkbox.value = value;
+                var text = document.createTextNode(label);
+                var br = document.createElement("br");
+                shootingElement.appendChild(checkbox);
+                shootingElement.appendChild(text);
+                shootingElement.appendChild(br);
+            });
+
+
+            // 編集手法
+            var editingMethods = [
+                { label: "カット", value: "カット" },
+                { label: "クロスフェード", value: "クロスフェード" },
+                { label: "ジャンプカット", value: "ジャンプカット" },
+                { label: "ワイプ", value: "ワイプ" },
+                { label: "フェードイン/フェードアウト", value: "フェードイン/フェードアウト" },
+                { label: "ピクチャーインピクチャー", value: "ピクチャーインピクチャー" },
+                { label: "モンタージュ", value: "モンタージュ" },
+                { label: "オーバーレイ", value: "オーバーレイ" },
+                { label: "テロップ", value: "テロップ" },
+                { label: "カラーグレーディング", value: "カラーグレーディング" },
+                { label: "エフェクト", value: "エフェクト" },
+                { label: "トランジション", value: "トランジション" },
+                { label: "レイヤー", value: "レイヤー" }
+            ];
+            var editingElement = document.getElementById("editing");
+            editingMethods.forEach(function(method) {
+                var label = method.label;
+                var value = method.value;
+                var checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.name = "editing-method";
+                checkbox.value = value;
+                var text = document.createTextNode(label);
+                var br = document.createElement("br");
+                editingElement.appendChild(checkbox);
+                editingElement.appendChild(text);
+                editingElement.appendChild(br);
+            });
+
+            // onomatope
+            function updateOnomatope() {
+            var onomatope1 = document.getElementById("onomatope1").value;
+            var onomatope2 = document.getElementById("onomatope2");
+                // onomatope2の選択肢をリセット
+                onomatope2.innerHTML = "";
+                // onomatope1に応じてonomatope2の選択肢を生成
+                if (onomatope1 === "光") {
+                    var options = [
+                        "ピカッ",
+                        "ピカピカ",
+                        "キラッ",
+                        "キラキラ",
+                        "ギラッ",
+                        "ギラギラ"
+                    ];
+                } else if (onomatope1 === "風") {
+                    var options = [
+                        "ソヨソヨ",
+                        "ビュービュー",
+                        "ゴウゴウ"
+                    ];
+                } else if (onomatope1 === "液体") {
+                    var options = [
+                    "ポトリ",
+                    "タラリ",
+                    "ポタポタ",
+                    "ジャアジャア",
+                    "ザーザー",
+                    "ザバザバ",
+                    "ジャブジャブ",
+                    "ジャバジャバ",
+                    "ベチャベチャ"
+                    ];
+                } else if (onomatope1 === "音") {
+                    var options = [
+                    "シャキシャキ",
+                    "シャリシャリ",
+                    "ジャリジャリ",
+                    "シュワシュワ",
+                    "ジュワジュワ",
+                    "ジュージュー",
+                    "ガタン",
+                    "バタン",
+                    "ボトン",
+                    "ピタッ",
+                    "ポトッ",
+                    "ズルズル",
+                    "ポリポリ",
+                    "ボリボリ",
+                    "モソモソ",
+                    "モゾモゾ",
+                    "カサカサ",
+                    "ガサガサ"
+                    ];
+                } else if (onomatope1 === "心") {
+                    var options = [
+                    "ズキュン",
+                    "ドキッ",
+                    "キュンッ",
+                    "クラッ",
+                    "ウキウキ",
+                    "ワクワク",
+                    "ザワザワ",
+                    "ハラハラ"
+                    ];
+                } else if (onomatope1 === "状態") {
+                    var options = [
+                    "未選択",
+                    "スッキリ",
+                    "イラッ",
+                    "モグモグ",
+                    "ガツガツ",
+                    "モクモク",
+                    "ペラペラ",
+                    "グルグル",
+                    "ギュウギュウ",
+                    "ズンズン",
+                    "ポツン",
+                    "ズルッ",
+                    "グニャグニャ",
+                    "ペコペコ",
+                    "フワフワ",
+                    "グシャグシャ",
+                    "グラグラ",
+                    "モリモリ"
+                    ];
+                } else if (onomatope1 === "感覚") {
+                    var options = [
+                    "パリパリ",
+                    "カリカリ",
+                    "フワフワ",
+                    "モチモチ",
+                    "ジューシー",
+                    "プリプリ",
+                    "トロトロ",
+                    "ゴワゴワ",
+                    "ザクザク",
+                    "シットリ",
+                    "コシコシ"
+                    ];
+                }
+                // 選択肢をoption要素として追加
+                options.forEach(function(option) {
+                    var optionElement = document.createElement("option");
+                    optionElement.value = option;
+                    optionElement.textContent = option;
+                    onomatope2.appendChild(optionElement);
+                });
+            }
+            
 
         </script>
     </body>
